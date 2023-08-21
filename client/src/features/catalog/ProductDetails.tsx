@@ -33,7 +33,7 @@ export default function ProductDetails() {
 
   return (
     <Grid container spacing={6}>
-      <Grid item xs={6}>
+      <Grid item xs={12} md={6}>
         <img
           src={product.pictureUrl}
           alt={product.name}
