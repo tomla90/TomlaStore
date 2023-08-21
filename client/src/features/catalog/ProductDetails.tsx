@@ -40,7 +40,7 @@ export default function ProductDetails() {
           style={{ width: '100%' }}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={10} md={6}>
         <Typography variant='h3'>{product.name}</Typography>
         <Divider sx={{ mb: 2 }} />
         <Typography variant='h4' color='secondary'>
