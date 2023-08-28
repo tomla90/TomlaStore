@@ -12,10 +12,12 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomePage from '../../features/home/HomePage';
+import { ShoppingCart } from '@mui/icons-material';
+import { useStoreContext } from '../context/StoreContext';
 
 const midLinks = [
   { title: 'catalog', path: '/catalog' },
@@ -46,6 +48,9 @@ const navStyles = {
 };
 
 export default function Header({ darkMode, handleThemeChange }: Props) {
+  const { basket } = useStoreContext();
+  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
+
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -103,6 +108,8 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
         <Box display='flex' alignItems='center'>
           {/* Shopping Cart Button (on both mobile and desktop) */}
           <IconButton
+            component={Link}
+            to='/basket'
             size='small'
             edge='start'
             color='inherit'
@@ -112,8 +119,8 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
               alignItems: 'center',
             }}
           >
-            <Badge badgeContent='4' color='secondary'>
-              <ShoppingCartIcon />
+            <Badge badgeContent={itemCount} color='secondary'>
+              <ShoppingCart />
             </Badge>
           </IconButton>
           <List
