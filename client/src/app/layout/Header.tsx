@@ -115,7 +115,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
             color='inherit'
             sx={{
               mr: 2,
-              display: 'flex', // Show in both mobile and desktop
+              display: 'flex',
               alignItems: 'center',
             }}
           >
